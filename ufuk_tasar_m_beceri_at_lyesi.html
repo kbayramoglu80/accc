@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFUK Tasarım Beceri Atölyesi</title>
+    <link rel="icon" type="image/jpeg" href="WhatsApp%20Image%202026-10-31%20at%2011.40.54.jpeg">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ufukOrange: '#FF6B00',
+                        ufukOrangeDark: '#E05D00',
+                        ufukBlue: '#0085FF',
+                        ufukPink: '#E91E63',
+                        ufukYellow: '#FFC107',
+                        ufukDark: '#1E293B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-outfit { font-family: 'Outfit', sans-serif; }
+        /* Custom badge curve styles */
+        .badge-bubble {
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        }
+        .hero-background {
+            background-image: url('Gemini_Generated_Image_fdtmpzfdtmpzfdtm.jpg');
+        }
+        @media (max-width: 639px) {
+            .hero-background {
+                background-image: url('Gemini_Generated_Image_hsk44zhsk44zhsk4.jpg');
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-ufukOrange selection:text-white">
+
+    <!-- TOP HEADER / NAVBAR -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center shrink-0" aria-label="UFUK Tasarım Beceri Atölyesi ana sayfa">
+                <img src="image-Photoroom%20(2).png" alt="UFUK Tasarım Beceri Atölyesi" class="h-16 w-16 sm:h-20 sm:w-20 object-contain">
+            </a>
+
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden lg:flex items-center gap-6 font-medium text-sm text-slate-700">
+                <a href="#anasayfa" class="text-ufukBlue font-semibold hover:text-ufukOrange transition">Ana Sayfa</a>
+                <div class="relative group py-2">
+                    <button class="flex items-center gap-1 hover:text-ufukOrange transition">
+                        Atölyelerimiz <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="absolute top-full left-0 w-48 bg-white shadow-xl rounded-xl py-2 hidden group-hover:block border border-slate-100">
+                        <a href="#atolyeler" class="block px-4 py-2 hover:bg-slate-50 text-sm">Okullara Özel</a>
+                        <a href="#atolyeler" class="block px-4 py-2 hover:bg-slate-50 text-sm">Çocuk Atölyeleri</a>
+                        <a href="#atolyeler" class="block px-4 py-2 hover:bg-slate-50 text-sm">Yetişkin Atölyeleri</a>
+                    </div>
+                </div>
+                <a href="#okullara" class="hover:text-ufukOrange transition">Okullara Özel</a>
+                <a href="#takvim" class="hover:text-ufukOrange transition">Etkinlik Takvimi</a>
+                <a href="#hakkimizda" class="hover:text-ufukOrange transition">Hakkımızda</a>
+                <a href="#iletisim" class="hover:text-ufukOrange transition">İletişim</a>
+            </nav>
+
+            <!-- Action Icons & CTA Button -->
+            <div class="flex items-center gap-4 sm:gap-6">
+                <button class="text-slate-600 hover:text-ufukOrange transition text-lg" aria-label="Arama">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button class="text-slate-600 hover:text-ufukOrange transition text-lg relative" aria-label="Sepet">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="absolute -top-2 -right-2 bg-ufukOrange text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+                
+                <a href="#randevu" class="hidden sm:inline-flex items-center gap-2 bg-ufukOrange hover:bg-ufukOrangeDark text-white px-5 py-3 rounded-full font-outfit font-bold text-sm shadow-lg shadow-ufukOrange/30 transform hover:-translate-y-0.5 transition duration-200">
+                    Atölye Randevu Al
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-slate-700 text-xl p-2" aria-label="Menüyü Aç">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3 font-medium">
+            <a href="#anasayfa" class="block text-ufukBlue font-semibold py-1">Ana Sayfa</a>
+            <a href="#atolyeler" class="block py-1">Atölyelerimiz</a>
+            <a href="#okullara" class="block py-1">Okullara Özel</a>
+            <a href="#takvim" class="block py-1">Etkinlik Takvimi</a>
+            <a href="#hakkimizda" class="block py-1">Hakkımızda</a>
+            <a href="#iletisim" class="block py-1">İletişim</a>
+            <div class="pt-2">
+                <a href="#randevu" class="block w-full text-center bg-ufukOrange text-white py-3 rounded-full font-bold shadow">Atölye Randevu Al</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="anasayfa" class="relative bg-gradient-to-b from-amber-50/50 to-white pt-0 sm:pt-6 pb-8 sm:pb-16 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
+            <div class="hero-background relative min-h-[560px] rounded-none sm:rounded-3xl p-3 sm:p-8 lg:p-12 border border-white/60 shadow-none sm:shadow-2xl overflow-hidden bg-cover bg-center">
+                <div class="absolute inset-0 bg-gradient-to-r from-sky-950/40 via-indigo-950/20 to-orange-950/5"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/10 via-transparent to-white/5"></div>
+
+                <div class="relative z-10 grid min-h-[536px] sm:min-h-0 lg:min-h-[512px] grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-8 items-start sm:items-center">
+                    <!-- Left Content: Headline & Icons -->
+                    <div class="lg:col-span-7 space-y-3 sm:space-y-6 rounded-3xl border border-white/45 bg-white/45 p-3 shadow-2xl backdrop-blur-sm sm:p-8 lg:p-9">
+                        <div class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-200 to-orange-200 px-4 py-1.5 text-xs font-bold font-outfit uppercase tracking-wider text-amber-950 shadow-sm">
+                            <i class="fa-solid fa-sparkles text-ufukOrange"></i> Geleceğin Atölyesi
+                        </div>
+
+                        <h1 class="text-2xl sm:text-5xl lg:text-6xl font-outfit font-black text-slate-900 tracking-tight leading-tight">
+                            GELECEĞİN <span class="text-ufukOrange inline-block transform -rotate-1">MUCİTLERİNİ</span> <br>
+                            <span class="text-slate-800 text-2xl sm:text-4xl lg:text-5xl font-extrabold mt-1 sm:mt-2 block">BERABER YETİŞTİRİYORUZ</span>
+                        </h1>
+
+                        <p class="text-slate-600 text-xs sm:text-base max-w-lg leading-relaxed">
+                            Çocukların hayal güçlerini gerçeğe dönüştürdüğü, el becerilerini ve bilimsel meraklarını geliştirdiği özel tasarım ve STEM atölyeleri.
+                        </p>
+
+                        <!-- Feature Badges (Tasarım, Deneyim, Öğrenme) -->
+                        <div class="flex flex-wrap gap-2 sm:gap-3 pt-1">
+                            <div class="flex items-center gap-2 sm:gap-3 rounded-2xl border border-sky-100 bg-sky-50/90 px-3 sm:px-4 py-2 sm:py-3 shadow-sm">
+                                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-base sm:text-lg font-bold">
+                                    <i class="fa-solid fa-gears"></i>
+                                </div>
+                                <span class="font-outfit font-bold text-slate-800 text-xs sm:text-sm">TASARIM</span>
+                            </div>
+
+                            <div class="flex items-center gap-2 sm:gap-3 rounded-2xl border border-amber-100 bg-amber-50/90 px-3 sm:px-4 py-2 sm:py-3 shadow-sm">
+                                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-base sm:text-lg font-bold">
+                                    <i class="fa-solid fa-flask"></i>
+                                </div>
+                                <span class="font-outfit font-bold text-slate-800 text-xs sm:text-sm">DENEYİM</span>
+                            </div>
+
+                            <div class="flex items-center gap-2 sm:gap-3 rounded-2xl border border-yellow-100 bg-yellow-50/90 px-3 sm:px-4 py-2 sm:py-3 shadow-sm">
+                                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-yellow-100 text-yellow-600 flex items-center justify-center text-base sm:text-lg font-bold">
+                                    <i class="fa-solid fa-lightbulb"></i>
+                                </div>
+                                <span class="font-outfit font-bold text-slate-800 text-xs sm:text-sm">ÖĞRENME</span>
+                            </div>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <div class="pt-1 sm:pt-2">
+                            <a href="#atolyeler" class="inline-flex items-center gap-2 sm:gap-3 bg-ufukDark hover:bg-slate-800 text-white px-5 sm:px-7 py-3 sm:py-4 rounded-full font-outfit font-bold text-sm sm:text-base shadow-xl transform hover:-translate-y-1 transition">
+                                Atölyeleri Keşfet <i class="fa-solid fa-arrow-right text-ufukOrange"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 MAIN CATEGORY CARDS SECTION -->
+    <section id="atolyeler" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Okullara Özel (Blue) -->
+                <div class="relative rounded-3xl overflow-hidden shadow-xl group border-2 border-sky-400 bg-sky-600 text-white flex flex-col justify-between p-6 sm:p-8">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 text-8xl font-black">
+                        <i class="fa-solid fa-school"></i>
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 bg-white text-sky-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-school"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-outfit font-black mb-3">OKULLARA ÖZEL<br>ATÖLYELER</h2>
+                        <p class="text-sky-100 text-sm sm:text-base leading-relaxed mb-6">
+                            Anaokul, ilkokul, ortaokul ve liseler için STEM ve Sanat atölye programlarımızla okullarınızda yaratıcı öğrenme deneyimleri sunuyoruz.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#randevu" class="inline-flex items-center gap-2 bg-white text-sky-600 hover:bg-sky-50 px-5 py-3 rounded-xl font-outfit font-bold text-sm shadow transition">
+                            Detaylı Bilgi <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Çocuk Atölyeleri (Orange) -->
+                <div class="relative rounded-3xl overflow-hidden shadow-xl group border-2 border-orange-400 bg-ufukOrange text-white flex flex-col justify-between p-6 sm:p-8">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 text-8xl font-black">
+                        <i class="fa-solid fa-child-reaching"></i>
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 bg-white text-ufukOrange rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-child-reaching"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-outfit font-black mb-3">ÇOCUK ATÖLYELERİ<br><span class="text-sm font-normal uppercase tracking-wider">(HAFTA SONU)</span></h2>
+                        <p class="text-orange-100 text-sm sm:text-base leading-relaxed mb-6">
+                            3+ yaş grubu için eğlenceli, öğretici ve uygulamalı atölyeler. Çocuklar hem eğleniyor hem de yeni beceriler kazanıyor.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#randevu" class="inline-flex items-center gap-2 bg-white text-ufukOrange hover:bg-orange-50 px-5 py-3 rounded-xl font-outfit font-bold text-sm shadow transition">
+                            Atölyeleri İncele <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Yetişkin Atölyeleri (Pink) -->
+                <div class="relative rounded-3xl overflow-hidden shadow-xl group border-2 border-pink-400 bg-ufukPink text-white flex flex-col justify-between p-6 sm:p-8">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 text-8xl font-black">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 bg-white text-ufukPink rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-outfit font-black mb-3">YETİŞKİN ATÖLYELERİ<br><span class="text-sm font-normal uppercase tracking-wider">(HAFTA SONU)</span></h2>
+                        <p class="text-pink-100 text-sm sm:text-base leading-relaxed mb-6">
+                            Sanat ve tasarım odaklı atölyelerle yetişkinler için yaratıcı ve keyifli bir zaman.
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#randevu" class="inline-flex items-center gap-2 bg-white text-ufukPink hover:bg-pink-50 px-5 py-3 rounded-xl font-outfit font-bold text-sm shadow transition">
+                            Atölyeleri İncele <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- POPULAR WORKSHOPS (POPÜLER ATÖLYELER) -->
+    <section class="py-12 bg-slate-100/70 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+                <div class="inline-flex items-center gap-3 bg-ufukYellow text-slate-900 px-6 py-2 rounded-full font-outfit font-extrabold text-lg shadow-md">
+                    <i class="fa-solid fa-star text-ufukOrange"></i> POPÜLER ATÖLYELER
+                </div>
+                <a href="#randevu" class="text-slate-700 hover:text-ufukOrange font-outfit font-semibold text-sm flex items-center gap-1 transition">
+                    Tüm Atölyeleri Gör <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Workshop Cards Slider / Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+                
+                <!-- Item 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition flex flex-col justify-between border border-slate-200">
+                    <div>
+                        <div class="relative h-40 bg-slate-200 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=400&q=80" alt="Vantilatör Araba" class="w-full h-full object-cover">
+                            <span class="absolute bottom-2 right-2 bg-sky-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">6+</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <h3 class="font-outfit font-bold text-slate-900 text-sm leading-snug">Vantilatör Araba Atölyesi</h3>
+                            <div class="space-y-1 text-xs text-slate-600">
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-calendar text-ufukOrange"></i> 12 Kasım Cts</div>
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-user text-ufukOrange"></i> 8/12 kontenjan</div>
+                                <div class="flex items-center gap-2 font-bold text-slate-900"><i class="fa-solid fa-tag text-ufukOrange"></i> 450 TL</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <a href="#randevu" class="block w-full text-center bg-ufukOrange hover:bg-ufukOrangeDark text-white py-2 rounded-xl font-outfit font-bold text-xs shadow transition">Randevu Al</a>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition flex flex-col justify-between border border-slate-200">
+                    <div>
+                        <div class="relative h-40 bg-slate-200 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=400&q=80" alt="Sürat Teknesi" class="w-full h-full object-cover">
+                            <span class="absolute bottom-2 right-2 bg-sky-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">6+</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <h3 class="font-outfit font-bold text-slate-900 text-sm leading-snug">Sürat Teknesi Atölyesi</h3>
+                            <div class="space-y-1 text-xs text-slate-600">
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-calendar text-ufukOrange"></i> 13 Kasım Paz</div>
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-user text-ufukOrange"></i> 6/10 kontenjan</div>
+                                <div class="flex items-center gap-2 font-bold text-slate-900"><i class="fa-solid fa-tag text-ufukOrange"></i> 450 TL</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <a href="#randevu" class="block w-full text-center bg-ufukOrange hover:bg-ufukOrangeDark text-white py-2 rounded-xl font-outfit font-bold text-xs shadow transition">Randevu Al</a>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition flex flex-col justify-between border border-slate-200">
+                    <div>
+                        <div class="relative h-40 bg-slate-200 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=400&q=80" alt="Sıcak Hava Balonu" class="w-full h-full object-cover">
+                            <span class="absolute bottom-2 right-2 bg-pink-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">5+</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <h3 class="font-outfit font-bold text-slate-900 text-sm leading-snug">Sıcak Hava Balonu Atölyesi</h3>
+                            <div class="space-y-1 text-xs text-slate-600">
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-calendar text-ufukOrange"></i> 19 Kasım Cts</div>
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-user text-ufukOrange"></i> 10/12 kontenjan</div>
+                                <div class="flex items-center gap-2 font-bold text-slate-900"><i class="fa-solid fa-tag text-ufukOrange"></i> 400 TL</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <a href="#randevu" class="block w-full text-center bg-ufukOrange hover:bg-ufukOrangeDark text-white py-2 rounded-xl font-outfit font-bold text-xs shadow transition">Randevu Al</a>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition flex flex-col justify-between border border-slate-200">
+                    <div>
+                        <div class="relative h-40 bg-slate-200 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=400&q=80" alt="Türk Mozaik Lamba" class="w-full h-full object-cover">
+                            <span class="absolute bottom-2 right-2 bg-indigo-600 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">10+</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <h3 class="font-outfit font-bold text-slate-900 text-sm leading-snug">Türk Mozaik Lamba Atölyesi</h3>
+                            <div class="space-y-1 text-xs text-slate-600">
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-calendar text-ufukOrange"></i> 20 Kasım Paz</div>
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-user text-ufukOrange"></i> 6/8 kontenjan</div>
+                                <div class="flex items-center gap-2 font-bold text-slate-900"><i class="fa-solid fa-tag text-ufukOrange"></i> 750 TL</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <a href="#randevu" class="block w-full text-center bg-ufukOrange hover:bg-ufukOrangeDark text-white py-2 rounded-xl font-outfit font-bold text-xs shadow transition">Randevu Al</a>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition flex flex-col justify-between border border-slate-200">
+                    <div>
+                        <div class="relative h-40 bg-slate-200 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=400&q=80" alt="Vitray Cam Boyama" class="w-full h-full object-cover">
+                            <span class="absolute bottom-2 right-2 bg-sky-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">6+</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <h3 class="font-outfit font-bold text-slate-900 text-sm leading-snug">Vitray Cam Boyama Atölyesi</h3>
+                            <div class="space-y-1 text-xs text-slate-600">
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-calendar text-ufukOrange"></i> 26 Kasım Cts</div>
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-user text-ufukOrange"></i> 8/10 kontenjan</div>
+                                <div class="flex items-center gap-2 font-bold text-slate-900"><i class="fa-solid fa-tag text-ufukOrange"></i> 500 TL</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <a href="#randevu" class="block w-full text-center bg-ufukOrange hover:bg-ufukOrangeDark text-white py-2 rounded-xl font-outfit font-bold text-xs shadow transition">Randevu Al</a>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition flex flex-col justify-between border border-slate-200">
+                    <div>
+                        <div class="relative h-40 bg-slate-200 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=400&q=80" alt="Kokulu Mum" class="w-full h-full object-cover">
+                            <span class="absolute bottom-2 right-2 bg-sky-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">6+</span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <h3 class="font-outfit font-bold text-slate-900 text-sm leading-snug">Kokulu Mum Atölyesi</h3>
+                            <div class="space-y-1 text-xs text-slate-600">
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-calendar text-ufukOrange"></i> 27 Kasım Paz</div>
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-user text-ufukOrange"></i> 8/10 kontenjan</div>
+                                <div class="flex items-center gap-2 font-bold text-slate-900"><i class="fa-solid fa-tag text-ufukOrange"></i> 500 TL</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <a href="#randevu" class="block w-full text-center bg-ufukOrange hover:bg-ufukOrangeDark text-white py-2 rounded-xl font-outfit font-bold text-xs shadow transition">Randevu Al</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKSHOP BOOKING SYSTEM (ATÖLYE RANDEVU SİSTEMİ) -->
+    <section id="randevu" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-sky-50 via-amber-50/50 to-orange-50 rounded-3xl p-6 sm:p-10 border border-amber-200 shadow-xl">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left: Title & Description -->
+                    <div class="lg:col-span-4 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-ufukOrange text-white flex items-center justify-center text-2xl shadow">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                            <h2 class="text-2xl sm:text-3xl font-outfit font-black text-slate-900 leading-tight">
+                                ATÖLYE<br>RANDEVU SİSTEMİ
+                            </h2>
+                        </div>
+                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            Takvimden dilediğiniz tarihi seçin, atölyenizi kolayca rezerve edin. Kontenjanlar sınırlıdır.
+                        </p>
+                        <div class="relative py-4 flex items-center justify-center">
+                            <div class="absolute -left-2 text-6xl text-ufukOrange opacity-20"><i class="fa-solid fa-clock"></i></div>
+                            <div class="absolute -right-2 text-6xl text-sky-500 opacity-20"><i class="fa-solid fa-calendar-check"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- Middle: November 2026 Calendar Grid -->
+                    <div class="lg:col-span-4 bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
+                        <div class="flex items-center justify-between mb-4">
+                            <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-700 transition" aria-label="Önceki Ay"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                            <span class="font-outfit font-bold text-slate-900 text-base">Kasım 2026</span>
+                            <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-700 transition" aria-label="Sonraki Ay"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                        </div>
+
+                        <!-- Days Header -->
+                        <div class="grid grid-cols-7 gap-1 text-center text-xs font-semibold text-slate-400 mb-2">
+                            <span>Pzt</span><span>Sal</span><span>Çar</span><span>Per</span><span>Cum</span><span>Cts</span><span>Paz</span>
+                        </div>
+
+                        <!-- Days Grid -->
+                        <div class="grid grid-cols-7 gap-1 text-center text-sm font-medium text-slate-700">
+                            <span class="py-2 text-slate-300">26</span><span class="py-2 text-slate-300">27</span><span class="py-2 text-slate-300">28</span><span class="py-2 text-slate-300">29</span><span class="py-2 text-slate-300">30</span><span class="py-2">1</span><span class="py-2">2</span>
+                            <span class="py-2">3</span><span class="py-2">4</span><span class="py-2">5</span><span class="py-2">6</span><span class="py-2">7</span><span class="py-2">8</span><span class="py-2">9</span>
+                            <span class="py-2">10</span><span class="py-2">11</span><span class="py-2 bg-ufukOrange text-white rounded-full font-bold shadow">12</span><span class="py-2">13</span><span class="py-2">14</span><span class="py-2 bg-amber-300 rounded-full font-bold">15</span><span class="py-2">16</span>
+                            <span class="py-2">17</span><span class="py-2">18</span><span class="py-2">19</span><span class="py-2 bg-ufukOrange text-white rounded-full font-bold shadow">20</span><span class="py-2">21</span><span class="py-2">22</span><span class="py-2">23</span>
+                            <span class="py-2">24</span><span class="py-2">25</span><span class="py-2">26</span><span class="py-2 bg-ufukBlue text-white rounded-full font-bold shadow">27</span><span class="py-2">28</span><span class="py-2">29</span><span class="py-2">30</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Selected Workshop Summary Card -->
+                    <div class="lg:col-span-4 bg-white rounded-2xl p-6 shadow-lg border border-slate-200 flex flex-col justify-between">
+                        <div class="flex gap-4 items-center mb-4">
+                            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=150&q=80" alt="Vantilatör Araba" class="w-20 h-20 rounded-xl object-cover shadow">
+                            <div>
+                                <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-md">Vantilatör Araba</span>
+                                <h3 class="font-outfit font-bold text-slate-900 text-base mt-1">Vantilatör Araba Atölyesi</h3>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 text-xs sm:text-sm text-slate-600 border-t border-b border-slate-100 py-3 mb-4">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-cake-candles text-ufukOrange"></i> 6+ yaş</div>
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-calendar text-ufukOrange"></i> 12 Kasım 2026 - Cumartesi</div>
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-clock text-ufukOrange"></i> 14:00 - 16:00</div>
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-user text-ufukOrange"></i> 8/12 kontenjan</div>
+                            <div class="flex items-center gap-2 font-bold text-slate-900 text-base"><i class="fa-solid fa-tag text-ufukOrange"></i> 450 TL</div>
+                        </div>
+
+                        <button onclick="alert('Randevu ekranı açılıyor!')" class="w-full bg-ufukOrange hover:bg-ufukOrangeDark text-white py-3 rounded-xl font-outfit font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-calendar-check"></i> Şimdi Randevu Al
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ICON FEATURES BAR (ÖZELLİK İKONLARI ÇUBUĞU) -->
+    <section class="py-8 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+                
+                <div class="flex flex-col items-center space-y-2">
+                    <div class="w-14 h-14 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl shadow-sm">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="font-outfit font-bold text-slate-900 text-sm">EĞİTİM ODAKLI</h4>
+                    <p class="text-xs text-slate-500">Uygulamalı, kalıcı öğrenme deneyimi</p>
+                </div>
+
+                <div class="flex flex-col items-center space-y-2">
+                    <div class="w-14 h-14 rounded-2xl bg-orange-100 text-ufukOrange flex items-center justify-center text-xl shadow-sm">
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                    <h4 class="font-outfit font-bold text-slate-900 text-sm">HER YAŞA UYGUN</h4>
+                    <p class="text-xs text-slate-500">Çocuk, genç ve yetişkin atölyeleri</p>
+                </div>
+
+                <div class="flex flex-col items-center space-y-2">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl shadow-sm">
+                        <i class="fa-solid fa-paintbrush"></i>
+                    </div>
+                    <h4 class="font-outfit font-bold text-slate-900 text-sm">YARATICI TASARIMLAR</h4>
+                    <p class="text-xs text-slate-500">STEM, Maker ve Sanat etkinlikleri</p>
+                </div>
+
+                <div class="flex flex-col items-center space-y-2">
+                    <div class="w-14 h-14 rounded-2xl bg-pink-100 text-ufukPink flex items-center justify-center text-xl shadow-sm">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h4 class="font-outfit font-bold text-slate-900 text-sm">UZMAN EĞİTMENLER</h4>
+                    <p class="text-xs text-slate-500">Deneyimli ve alanında uzman kadromuz</p>
+                </div>
+
+                <div class="flex flex-col items-center space-y-2 col-span-2 md:col-span-1">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl shadow-sm">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </div>
+                    <h4 class="font-outfit font-bold text-slate-900 text-sm">KOLAY RANDEVU</h4>
+                    <p class="text-xs text-slate-500">Online rezervasyon ve güvenli ödeme</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT / INTRO SECTION (HAKKIMIZDA) -->
+    <section id="hakkimizda" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left: Video / Photo Showcase -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white group">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Atölye ortamı" class="w-full h-[320px] sm:h-[380px] object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/0085FF/ffffff?text=Ufuk+Atolye'">
+                        <div class="absolute inset-0 bg-slate-900/30 flex items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-ufukOrange text-white flex items-center justify-center text-2xl shadow-xl transform group-hover:scale-110 transition cursor-pointer">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Middle: Description -->
+                <div class="lg:col-span-4 space-y-4">
+                    <h2 class="text-2xl sm:text-3xl font-outfit font-black text-slate-900 leading-tight">
+                        UFUK TASARIM BECERİ ATÖLYESİ
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Hayal eden, tasarlayan, üreten ve paylaşan bireyler yetiştirmek için çalışıyoruz. STEM, Maker ve Sanat atölyelerimizle çocukların ve yetişkinlerin yaratıcılıklarını destekliyor, deneyimleyerek öğrenmelerini sağlıyoruz.
+                    </p>
+                    <div class="pt-2">
+                        <a href="#hakkimizda" class="inline-flex items-center gap-2 bg-ufukDark hover:bg-slate-800 text-white px-6 py-3 rounded-full font-outfit font-bold text-sm shadow transition">
+                            Hakkımızda <i class="fa-solid fa-arrow-right text-ufukOrange"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Tasarla Dene Öğren Keşfet Badge -->
+                <div class="lg:col-span-3 flex justify-center">
+                    <div class="w-56 h-56 rounded-full bg-gradient-to-tr from-ufukOrange via-amber-500 to-ufukYellow p-2 shadow-2xl flex items-center justify-center text-center transform hover:rotate-6 transition duration-300">
+                        <div class="w-full h-full rounded-full bg-amber-500 flex flex-col items-center justify-center text-white p-4 relative overflow-hidden shadow-inner border-4 border-white/30">
+                            <span class="font-outfit font-black text-lg tracking-wider">TASARLA</span>
+                            <span class="font-outfit font-black text-lg tracking-wider text-amber-100">DENE</span>
+                            <span class="font-outfit font-black text-lg tracking-wider text-amber-200">ÖĞREN</span>
+                            <span class="font-outfit font-black text-lg tracking-wider text-white">KEŞFET</span>
+                            <div class="absolute bottom-2 right-2 text-2xl"><i class="fa-solid fa-lightbulb"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / ALT BİLGİ -->
+    <footer id="iletisim" class="bg-white border-t border-slate-200 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center sm:text-left">
+                
+                <div class="flex items-center gap-3 justify-center sm:justify-start">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fa-solid fa-shield-halved text-ufukOrange"></i>
+                    </div>
+                    <div>
+                        <h5 class="font-outfit font-bold text-slate-900 text-xs sm:text-sm">Güvenli Ödeme</h5>
+                        <p class="text-[11px] text-slate-500">256-bit SSL koruması</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 justify-center sm:justify-start">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fa-solid fa-rotate-left text-ufukOrange"></i>
+                    </div>
+                    <div>
+                        <h5 class="font-outfit font-bold text-slate-900 text-xs sm:text-sm">Kolay İptal / Değişiklik</h5>
+                        <p class="text-[11px] text-slate-500">Esnek randevu koşulları</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 justify-center sm:justify-start">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fa-solid fa-user-group text-ufukOrange"></i>
+                    </div>
+                    <div>
+                        <h5 class="font-outfit font-bold text-slate-900 text-xs sm:text-sm">Sınırlı Kontenjan</h5>
+                        <p class="text-[11px] text-slate-500">Birebir ilgi ve kalite</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 justify-center sm:justify-start">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fa-solid fa-ticket text-ufukOrange"></i>
+                    </div>
+                    <div>
+                        <h5 class="font-outfit font-bold text-slate-900 text-xs sm:text-sm">E-Bilet / Onay</h5>
+                        <p class="text-[11px] text-slate-500">Anında SMS ve e-posta</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 justify-center sm:justify-start col-span-2 sm:col-span-1">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-lg flex-shrink-0">
+                        <i class="fa-solid fa-headset text-ufukOrange"></i>
+                    </div>
+                    <div>
+                        <h5 class="font-outfit font-bold text-slate-900 text-xs sm:text-sm">Destek Hattı</h5>
+                        <p class="text-[11px] text-slate-500">0850 000 00 00</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-slate-100 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p>&copy; 2026 UFUK Tasarım Beceri Atölyesi. Tüm hakları saklıdır.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-ufukOrange transition">Gizlilik Politikası</a>
+                    <a href="#" class="hover:text-ufukOrange transition">Kullanım Koşulları</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
